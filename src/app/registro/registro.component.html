@@ -1,0 +1,13 @@
+  <div class="text-center">
+      <form class="form-signin" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm">
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Comic Discover.com</h1>
+        <input type="text" id="inputEmail" class="form-control" placeholder="Name" name="username" [(ngModel)]="model.username" #username="ngModel" pattern="^[a-zA-Z0-9]+" maxlength="15" required autofocus>
+        <div *ngIf="f.submitted && !username.valid && username.errors.required" class="msj_error">El nombre de usuario es requerido</div>
+        <div *ngIf="!username.valid && username.errors.pattern" class="msj_error">Digite solo letras y números</div>
+        <input type="email" id="inputPassword" class="form-control" placeholder="Email adress" name="email" [(ngModel)]="model.email" #email="ngModel" pattern="^[a-zA-Z0-9][a-zA-Z0-9_]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$" required>
+        <div *ngIf="!email.valid && email.errors.pattern" class="msj_error">Email incorrecto</div>
+        <div *ngIf="f.submitted && !email.valid && email.errors.required" class="msj_error">El email es requerido</div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Go for it!</button>
+      </form>
+    </div>

@@ -1,0 +1,27 @@
+<br>
+<div class="alert alert-danger" role="alert" *ngIf="mensajeError">
+  {{mensajeError}}
+</div>  
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let personaje of personajes">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="{{personaje.thumbnail.path}}/portrait_fantastic.{{personaje.thumbnail.extension}}" alt="image">
+                  <h2>{{personaje.name}}</h2>
+                  <div class="card-body">
+                    <p class="card-text" *ngIf="personaje.description != undefined || personaje.description != ''">{{personaje.description}}</p>
+                    <p class="card-text" *ngIf="personaje.description == undefined || personaje.description == ''">(Sin detalle)</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a class="btn btn-sm btn-outline-secondary" href="{{personaje.urls[0].url}}" target="_blank" (click)="GuardarOpcion('Detalle', personaje.name)">Detalle</a>
+                        <a class="btn btn-sm btn-outline-secondary" href="{{personaje.urls[1].url}}" target="_blank" (click)="GuardarOpcion('Wiki', personaje.name)">Wiki</a>
+                        <a class="btn btn-sm btn-outline-secondary" href="{{personaje.urls[2].url}}" target="_blank" (click)="GuardarOpcion('Comics', personaje.name)">Comics</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
